@@ -37,7 +37,7 @@ class mainWindow(QMainWindow):
         if files:
             outputPath = QFileDialog.getExistingDirectory(self,
                                                           '请选择输出文件夹',
-                                                          './')
+                                                          '/'.join(files[0].split('/')[:-1]))
             if outputPath:
                 self.dumpingdialog.show()
                 filesTotal, filesDumped = len(files), 0
