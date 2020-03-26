@@ -14,10 +14,10 @@ from dumping import Ui_dumpingDialog
 from ncmdump import dump
 
 class mainWindow(QMainWindow):
-    def __init__(self, parent=None):
-        super(mainWindow, self).__init__(parent)
+    def __init__(self, scalRate):
+        super(mainWindow, self).__init__(None)
         self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)
+        self.ui.setupUi(self,scalRate)
         self.setupIcon()
         self.dumpingdialog = dumpingDialog(self,self.icon)
         self.initSignal()
@@ -52,7 +52,8 @@ class mainWindow(QMainWindow):
 class ncmDumper(object):
     def __init__(self):
         self.app = QApplication(sys.argv)
-        self.mainwindow = mainWindow()
+        self.scalRate = self.app.screens()[0].logicalDotsPerInch()/96
+        self.mainwindow = mainWindow(self.scalRate)
 
 class dumpingDialog(QDialog):
     def __init__(self,parent,icon):
