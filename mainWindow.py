@@ -11,14 +11,14 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_MainWindow(object):
-    def setupUi(self, MainWindow,scalRate):
+    def setupUi(self, MainWindow,scaleRate):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setWindowModality(QtCore.Qt.NonModal)
-        MainWindow.resize(400*scalRate, 200*scalRate)
+        MainWindow.resize(400*scaleRate, 200*scaleRate)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(40*scalRate, 20*scalRate, 320*scalRate, 40*scalRate))
+        self.label.setGeometry(QtCore.QRect(40*scaleRate, 20*scaleRate, 320*scaleRate, 40*scaleRate))
         font = QtGui.QFont()
         font.setFamily("幼圆")
         font.setPointSize(24)
@@ -28,7 +28,7 @@ class Ui_MainWindow(object):
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.commandLinkButton = QtWidgets.QCommandLinkButton(self.centralwidget)
-        self.commandLinkButton.setGeometry(QtCore.QRect(110*scalRate, 100*scalRate, 180*scalRate, 60*scalRate))
+        self.commandLinkButton.setGeometry(QtCore.QRect(110*scaleRate, 100*scaleRate, 180*scaleRate, 60*scaleRate))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(10)

@@ -4,7 +4,7 @@
 author:kdxcxs@github.com
 '''
 
-import sys,base64
+import sys
 from PyQt5.QtWidgets import QMainWindow,QFileDialog,QDialog,QApplication
 from PyQt5.QtGui import QPixmap,QIcon
 from PyQt5.QtCore import QByteArray
@@ -14,10 +14,10 @@ from dumping import Ui_dumpingDialog
 from ncmdump import dump
 
 class mainWindow(QMainWindow):
-    def __init__(self, scalRate):
+    def __init__(self, scaleRate):
         super(mainWindow, self).__init__(None)
         self.ui = Ui_MainWindow()
-        self.ui.setupUi(self,scalRate)
+        self.ui.setupUi(self,scaleRate)
         self.setupIcon()
         self.dumpingdialog = dumpingDialog(self,self.icon)
         self.initSignal()
@@ -52,8 +52,8 @@ class mainWindow(QMainWindow):
 class ncmDumper(object):
     def __init__(self):
         self.app = QApplication(sys.argv)
-        self.scalRate = self.app.screens()[0].logicalDotsPerInch()/96
-        self.mainwindow = mainWindow(self.scalRate)
+        self.scaleRate = self.app.screens()[0].logicalDotsPerInch()/96
+        self.mainwindow = mainWindow(self.scaleRate)
 
 class dumpingDialog(QDialog):
     def __init__(self,parent,icon):
