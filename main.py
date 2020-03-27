@@ -17,8 +17,8 @@ class mainWindow(QMainWindow):
     def __init__(self, scaleRate):
         super(mainWindow, self).__init__(None)
         self.ui = Ui_MainWindow()
-        self.ui.setupUi(self,scaleRate)
-        self.setupIcon()
+        self.ui.setupUi(self,scaleRate) # 把所有控件大小和位置都乘以Windows缩放比例来适配Windows缩放
+        self.setupIcon() # 直接通过base64把图标写入程序,避免pyinstaller打包后图标失效
         self.dumpingdialog = dumpingDialog(self,self.icon)
         self.initSignal()
         self.show()
@@ -37,7 +37,7 @@ class mainWindow(QMainWindow):
         if files:
             outputPath = QFileDialog.getExistingDirectory(self,
                                                           '请选择输出文件夹',
-                                                          '/'.join(files[0].split('/')[:-1]))
+                                                          '/'.join(files[0].split('/')[:-1])) # 初始输出文件夹为第一个ncm文件所在目录
             if outputPath:
                 self.dumpingdialog.show()
                 filesTotal, filesDumped = len(files), 0
@@ -52,7 +52,7 @@ class mainWindow(QMainWindow):
 class ncmDumper(object):
     def __init__(self):
         self.app = QApplication(sys.argv)
-        self.scaleRate = self.app.screens()[0].logicalDotsPerInch()/96
+        self.scaleRate = self.app.screens()[0].logicalDotsPerInch()/96 # 获取Windows缩放比例以适配Windows缩放
         self.mainwindow = mainWindow(self.scaleRate)
 
 class dumpingDialog(QDialog):
