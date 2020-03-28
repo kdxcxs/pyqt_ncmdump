@@ -1,2 +1,2 @@
-ncmdump==0.1.0
+-e git+http://git.kdxcxs.com:7878/kdxcxs/ncmdump.git#egg=ncmdump
 PyQt5==5.14.1
