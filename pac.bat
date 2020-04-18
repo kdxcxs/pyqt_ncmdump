@@ -1,1 +1,1 @@
-pyinstaller -F -w -i icon.ico main.py --version-file version_info.txt
+pyinstaller -F -w --hidden-import=ncmdump -i icon.ico main.py --version-file version_info.txt
